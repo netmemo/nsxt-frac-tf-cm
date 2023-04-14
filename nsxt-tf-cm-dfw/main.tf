@@ -28,6 +28,9 @@ resource "nsxt_policy_security_policy" "policies" {
 		 services = [for x in rule.value["services"] : try(var.nsxt_policy_svc_svc[x].path,var.nsxt_policy_svc_bltin[x].path)]
 		 scope = [for x in rule.value["scope"] : try(var.nsxt_policy_grp_grp[x].path)]
 		 disabled = rule.value["disabled"]
+       logged = rule.value["logged"]
+       direction = rule.value["direction"]
+       notes = rule.value["notes"]       
       }
    }
 }
